@@ -19,7 +19,7 @@ function Login() {
   });
 
   const Login = (data) => {
-    Axios.post("http://localhost:3001/auth/login", data).then((response) => {
+    Axios.post("https://full-stack-api-sportytalk.herokuapp.com/auth/login", data).then((response) => {
       if (response.data.error) {
         alert(response.data.error);
       } else {

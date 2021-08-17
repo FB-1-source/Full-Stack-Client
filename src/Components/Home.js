@@ -10,7 +10,7 @@ function Home() {
   let history = useHistory();
 
   useEffect(() => {
-    axios.get("http://localhost:3001/posts").then((response) => {
+    axios.get("https://full-stack-api-sportytalk.herokuapp.com/posts").then((response) => {
       setdatalist(response.data);
     });
   }, []);

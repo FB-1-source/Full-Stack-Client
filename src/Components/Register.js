@@ -23,7 +23,7 @@ function Register() {
   });
 
   const submit = (data) => {
-    Axios.post("http://localhost:3001/auth", data).then(() => {
+    Axios.post("https://full-stack-api-sportytalk.herokuapp.com/auth", data).then(() => {
       history.push("/login");
     });
   };

@@ -12,18 +12,18 @@ function Postinfo() {
   const [commentval, setcommentval] = useState("");
   const { Authstate } = useContext(Authcontext);
   useEffect(() => {
-    Axios.get(`http://localhost:3001/posts/id/${id}`).then((response) => {
+    Axios.get(`https://full-stack-api-sportytalk.herokuapp.com/posts/id/${id}`).then((response) => {
       setpostdeats(response.data);
     });
 
-    Axios.get(`http://localhost:3001/comments/${id}`).then((response) => {
+    Axios.get(`https://full-stack-api-sportytalk.herokuapp.com/comments/${id}`).then((response) => {
       setcomments(response.data);
     });
   }, []);
 
   const addComment = () => {
     Axios.post(
-      "http://localhost:3001/comments",
+      "https://full-stack-api-sportytalk.herokuapp.com/comments",
       { commentBody: commentval, PostId: id },
       {
         headers: { accessToken: localStorage.getItem("accessToken") },
@@ -45,7 +45,7 @@ function Postinfo() {
 
   const deleteComment = (id) => {
     axios
-      .delete(`http://localhost:3001/comments/${id}`, {
+      .delete(`https://full-stack-api-sportytalk.herokuapp.com/comments/${id}`, {
         headers: { accessToken: localStorage.getItem("accessToken") },
       })
       .then(() => {

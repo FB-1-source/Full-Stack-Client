@@ -21,7 +21,7 @@ function Newpost() {
     username: Yup.string().min(4).max(15).required(),
   });
   const submit = (data) => {
-    Axios.post("http://localhost:3001/posts", data).then((response) => {
+    Axios.post("https://full-stack-api-sportytalk.herokuapp.com/posts", data).then((response) => {
       history.push("/home");
     });
   };
