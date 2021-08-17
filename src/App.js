@@ -20,7 +20,7 @@ function App() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3001/auth/authcheck", {
+      .get("https://full-stack-api-sportytalk.herokuapp.com/auth/authcheck", {
         headers: { accessToken: localStorage.getItem("accessToken") },
       })
       .then((response) => {
