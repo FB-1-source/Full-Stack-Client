@@ -4,6 +4,7 @@ import * as Yup from "yup";
 import Axios from "axios";
 import { Link } from "react-router-dom";
 import { Authcontext } from "../Authcheck/Authcontext";
+import { useHistory } from "react-router-dom";
 
 function Login() {
   const initalValues = {
@@ -12,20 +13,23 @@ function Login() {
   };
 
   const { Authstate, setAuthState } = useContext(Authcontext);
-
+  let history = useHistory();
   const validationSchema = Yup.object().shape({
     username: Yup.string().required("You have to enter a username!"),
     password: Yup.string().required("You have to enter a password!"),
   });
 
   const Login = (data) => {
-    Axios.post("https://full-stack-api-sportytalk.herokuapp.com/auth/login", data).then((response) => {
+    Axios.post(
+      "https://full-stack-api-sportytalk.herokuapp.com/auth/login",
+      data
+    ).then((response) => {
       if (response.data.error) {
         alert(response.data.error);
       } else {
         localStorage.setItem("accessToken", response.data);
         setAuthState({ ...Authstate, status: true });
-        window.location.assign("/home");
+        history.push("/home");
       }
     });
   };
